@@ -19,6 +19,7 @@ export default function Month({
   weekClassName,
   weekdayElement,
   fixedWeeks,
+  weekSeparator,
 }) {
   const captionProps = {
     date: month,
@@ -27,7 +28,16 @@ export default function Month({
     locale,
     onClick: onCaptionClick ? e => onCaptionClick(e, month) : undefined,
   };
-  const weeks = getWeekArray(month, firstDayOfWeek, fixedWeeks);
+  let weeks = getWeekArray(month, firstDayOfWeek, fixedWeeks);
+  if (weekSeparator) {
+    let weeksWithSeparator = []
+      for (let i = 0; i < weeks.length; i++) {
+        weeksWithSeparator.push(weeks[i]);
+        weeksWithSeparator.push(0);
+      }
+    weeks = weeksWithSeparator;
+  }
+
   return (
     <div className={ className }>
       {React.cloneElement(captionElement, captionProps)}
@@ -42,9 +52,13 @@ export default function Month({
       <div className={ wrapperClassName } role="grid">
         {
           weeks.map((week, j) =>
-            <div key={ j } className={ weekClassName } role="gridcell">
-              {week.map(day => children(day, month))}
-            </div>,
+              <div key={ j } className={ week === 0 ? "DayPicker-WeekSeparator" :  weekClassName} role="gridcell">
+                { week === 0 ? (
+                    <div>{ weekSeparator(weeks[j-1]) }</div>
+                ) : (
+                  week.map(day => children(day, month))
+                  )}
+              </div>
         )}
       </div>
     </div>
@@ -67,4 +81,5 @@ Month.propTypes = {
   weekClassName: PropTypes.string,
   weekdayElement: PropTypes.element,
   fixedWeeks: PropTypes.bool,
+  weekSeparator: PropTypes.func,
 };

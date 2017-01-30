@@ -88,6 +88,11 @@
     cursor: default;
   }
 
+  div.DayPicker-WeekSeparator>div>div {
+      position:relative;
+      width:1px;
+      overflow:visible;
+  }
 /* Default modifiers */
 
 .DayPicker-Day--today {

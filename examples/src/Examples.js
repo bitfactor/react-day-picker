@@ -25,6 +25,7 @@ import SelectableDay from './examples/SelectableDay';
 import SimpleCalendar from './examples/SimpleCalendar';
 import YearCalendar from './examples/YearCalendar';
 import YearNavigation from './examples/YearNavigation';
+import WeekSeparator from './examples/WeekSeparator';
 
 const Prism = require('./vendors/prism');
 
@@ -39,7 +40,12 @@ function getExampleName(location) {
 }
 
 const EXAMPLES = {
-  simple: {
+  weekseparator: {
+    title: 'Week Separator Calendar',
+    description: 'Show the clicked day in an alert window.',
+    Component: WeekSeparator,
+  },
+   simple: {
     title: 'Simple Calendar',
     description: 'Show the clicked day in an alert window.',
     Component: SimpleCalendar,

@@ -50,6 +50,8 @@ export default class DayPicker extends Component {
     onMonthChange: PropTypes.func,
     onCaptionClick: PropTypes.func,
 
+    weekSeparator: PropTypes.func,
+
     renderDay: PropTypes.func,
 
     weekdayElement: PropTypes.element,
@@ -442,6 +444,7 @@ export default class DayPicker extends Component {
           captionElement={ this.props.captionElement }
 
           onCaptionClick={ this.props.onCaptionClick }
+          weekSeparator={ this.props.weekSeparator }
         >
           {this.renderDayInMonth}
         </Month>);
