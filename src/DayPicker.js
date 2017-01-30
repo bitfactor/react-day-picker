@@ -13,7 +13,7 @@ import keys from './keys';
 import DayPickerPropTypes from './PropTypes';
 
 export default class DayPicker extends Component {
-  static VERSION = '3.1.1';
+  static VERSION = '3.1.2';
 
   static propTypes = {
     initialMonth: PropTypes.instanceOf(Date),
