@@ -30,11 +30,11 @@ export default function Month({
   };
   let weeks = getWeekArray(month, firstDayOfWeek, fixedWeeks);
   if (weekSeparator) {
-    let weeksWithSeparator = []
-      for (let i = 0; i < weeks.length; i++) {
-        weeksWithSeparator.push(weeks[i]);
-        weeksWithSeparator.push(0);
-      }
+    const weeksWithSeparator = [];
+    for (let i = 0; i < weeks.length; i += 1) {
+      weeksWithSeparator.push(weeks[i]);
+      weeksWithSeparator.push(0);
+    }
     weeks = weeksWithSeparator;
   }
 
@@ -52,13 +52,13 @@ export default function Month({
       <div className={ wrapperClassName } role="grid">
         {
           weeks.map((week, j) =>
-              <div key={ j } className={ week === 0 ? "DayPicker-WeekSeparator" :  weekClassName} role="gridcell">
-                { week === 0 ? (
-                    <div>{ weekSeparator(weeks[j-1]) }</div>
-                ) : (
-                  week.map(day => children(day, month))
-                  )}
-              </div>
+            <div key={ j } className={ week === 0 ? 'DayPicker-WeekSeparator' : weekClassName } role="gridcell">
+              { week === 0 ? (
+                <div>{ weekSeparator(weeks[j - 1]) }</div>
+              ) : (
+                week.map(day => children(day, month))
+                )}
+            </div>,
         )}
       </div>
     </div>
